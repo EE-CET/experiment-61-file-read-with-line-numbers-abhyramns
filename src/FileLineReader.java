@@ -13,5 +13,18 @@ public class FileLineReader {
         // TODO: Catch and handle any IOExceptions that might occur
         
         
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int lineNumber = 1;
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(lineNumber + ": " + line);
+                lineNumber++;
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
     }
 }
